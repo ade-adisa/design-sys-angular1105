@@ -1,6 +1,6 @@
 <main class="main">
     <div class="content">
         <button (click)="toggleTheme()" class="toggle-button">Toggle Theme</button>
-        <app-login-form [theme]="currentTheme" [showPasswordStrength]="true" (submit)="handleLogin(handleLogin)"></app-login-form>
+        <app-login-form [theme]="currentTheme" [showPasswordStrength]="true" (submit)="handleLogin($event)"></app-login-form>
     </div>
 </main>

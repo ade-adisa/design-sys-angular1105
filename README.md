@@ -1,27 +1,140 @@
-# LoginFormApp
+# Login Form
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+A customizable and themeable login form component for Angular, designed to align with your design system's standards and provide a reusable login interface. This component is built with accessibility and flexibility in mind, making it suitable for various applications.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Usage](#usage)
+- [Component Props](#component-props)
+- [State Variations and Theming](#state-variations-and-theming)
+- [Accessibility Considerations](#accessibility-considerations)
+- [Scaling and Modifications](#scaling-and-modifications)
+- [Examples](#examples)
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To use the `LoginFormComponent`:
 
-## Build
+1. Import the component into your module:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+    ```typescript
+    import { LoginFormComponent } from './login-form/login-form.component';
+    ```
 
-## Running unit tests
+2. Include it in the template of your wrapper or page component:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    ```html
+    <app-login-form
+      [theme]="'light'"
+      [showPasswordStrength]="true"
+      (submit)="handleLogin($event)">
+    </app-login-form>
+    ```
 
-## Running end-to-end tests
+3. Define the `handleLogin` function in your component to handle form submissions.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Installation
 
-## Further help
+This component is part of a standalone repository:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+git clone https://github.com/ade-adisa/design-sys-angular1105.git
+cd design-sys-angular1105
+npm install
+```
+
+## Component Props
+
+| Prop                 | Type              | Default     | Description                                                   |
+|----------------------|-------------------|-------------|---------------------------------------------------------------|
+| `theme`              | `'light' | 'dark'` | `'light'`   | The theme of the form, allowing for a light or dark background. |
+| `showPasswordStrength` | `boolean`       | `false`     | Whether to display the password strength indicator.            |
+
+### Events
+
+| Event   | Payload                             | Description                           |
+|---------|-------------------------------------|---------------------------------------|
+| `submit`| `{ email: string, password: string }` | Emitted on form submission with form data. |
+
+## State Variations and Theming
+
+### Theme Variations
+
+The `LoginFormComponent` supports two themes: **light** and **dark**.
+
+- **Light Theme**: The component background is white, with dark text and form fields.
+- **Dark Theme**: The component background is dark gray, with light text and form fields.
+
+Example of using the dark theme:
+
+```html
+<app-login-form
+  [theme]="'dark'"
+  [showPasswordStrength]="true"
+  (submit)="handleLogin($event)">
+</app-login-form>
+```
+
+### Password Strength Indicator
+
+When `showPasswordStrength` is set to `true`, the component displays an indicator showing the strength of the password as the user types.
+
+```html
+<app-login-form
+  [showPasswordStrength]="true"
+  (submit)="handleLogin($event)">
+</app-login-form>
+```
+
+## Accessibility Considerations
+
+- **Keyboard Navigation**: All fields and buttons are accessible via keyboard. Users can navigate through form fields using the `Tab` key and submit the form with the `Enter` key.
+- **Screen Readers**: ARIA labels and live regions ensure that screen readers interpret the form fields correctly. Each field has a clear label, and error messages are read aloud when fields are invalid.
+- **Focus Indicators**: Customizable focus states make it clear which element is currently selected for users navigating with a keyboard.
+
+### Error Messaging
+
+Error messages are announced in a non-intrusive manner to avoid overwhelming users with screen readers. For example, when the email or password field is invalid, an error message appears beneath the field and is announced via ARIA attributes.
+
+## Scaling and Modifications
+
+This component is designed to be easily scalable and adaptable for various use cases:
+
+- **Custom Validation**: You can extend the component by injecting additional validation rules (e.g., unique domain requirements for email).
+- **Third-Party Authentication**: Modify the `onSubmit` method to handle OAuth or third-party authentication services.
+- **Custom Themes**: Extend the component to support additional themes by defining more theme objects and modifying the `theme` input property.
+- **Field Expansion**: Add more fields such as username, confirm password, or a “Remember Me” checkbox by expanding the `FormGroup` and template.
+
+## Examples
+
+### Basic Usage
+
+```html
+<app-login-form (submit)="handleLogin($event)"></app-login-form>
+```
+
+### With Dark Theme and Password Strength
+
+```html
+<app-login-form
+  [theme]="'dark'"
+  [showPasswordStrength]="true"
+  (submit)="handleLogin($event)">
+</app-login-form>
+```
+
+### Handling the Submit Event
+
+```typescript
+export class WrapperComponent {
+  handleLogin(formData: { email: string, password: string }) {
+    console.log('Form data:', formData);
+    // Implement further login logic here
+  }
+}
+```
+
+## License
+
+This component is part of the design system in [this repository](https://github.com/ade-adisa/design-sys-angular1105.git). Please refer to the repository for license information.
+
