@@ -1,0 +1,18 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.toggle-button {
+    width: fit-content;
+    padding: .5rem;
+    display: inline-block;
+    overflow: auto;
+    white-space: nowrap;
+    margin:50px auto;
+    border-radius: 5px;
+    background-color: #ffbb52;
+    transition: background-color 250ms, border-color 250ms, transform 500ms cubic-bezier(.26,2,.46,.71);
+}

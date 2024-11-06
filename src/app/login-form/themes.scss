@@ -1,0 +1,21 @@
+/* Light Theme */
+.light-theme {
+    --background: #ffffff;
+    --button-background: #253B62;
+    --color: #000000;
+    --input-background: #ffffff;
+    --border-color: #cccccc;
+    --success-color: #2c9468;
+    --error-color: #ff0000;
+  }
+  
+  /* Dark Theme */
+  .dark-theme {
+    --background: #333333;
+    --button-background: #4584F2;
+    --color: #ffffff;
+    --input-background: #555555;
+    --border-color: #aba9a9;
+    --success-color: #7EE2B8;
+    --error-color: #ff6666;
+  }

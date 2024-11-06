@@ -1,0 +1,55 @@
+<div [ngClass]="theme">
+    <div class="form-container">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Email Field -->
+        <label for="email">Email</label>
+        <div class="input-block">
+            <input
+                id="email"
+                type="email"
+                aria-label="Email"
+                formControlName="email"
+                placeholder="Enter your email"
+            />
+        </div>
+        <!-- Real-time error messages for invalid email -->
+        <div *ngIf="errors.email" class="error-text default-text">
+            {{errors.email}}
+        </div>
+
+    
+        <!-- Password Field -->
+        <div [ngStyle]="{ 'margin-top': !errors.email ? '0.75rem' : '0' }">
+            <label for="password">Password</label>
+            <div class="input-block">
+                <input
+                    id="password"
+                    type="password"
+                    aria-label="Password"
+                    formControlName="password"
+                    placeholder="Enter your password"
+                />
+            </div>
+        </div>
+        <div>
+            <div *ngIf="loginForm.get('password')?.value && errors.password" class="default-text standard-info-text">
+                Use 8 or more characters with a mix of letters, numbers, capcase and symbols
+            </div>
+            
+            <!-- Real-time error messages for invalid password -->
+            <div *ngIf="errors.password" class="error-text default-text">
+                {{errors.password}}
+            </div>
+            <div *ngIf="loginForm.get('password')?.value.length > 0 && !errors.password" class="success-text default-text">
+                Password is valid
+            </div>
+        </div>
+    
+        <!-- Password Strength Indicator -->
+        <div class="default-text" *ngIf="passwordStrength && showPasswordStrength" [ngStyle]="{'color': theme === 'dark-theme' ? '#ffffff' : '#000000', padding: '.75rem 0 .5rem'}">Password Strength: {{ passwordStrength }}</div>
+    
+        <button aria-label="Login" type="submit" [ngStyle]="{ 'margin': passwordStrength && showPasswordStrength ? '0' : '1rem 0 .5rem' }">Login</button>
+        </form>
+    </div>
+</div>
