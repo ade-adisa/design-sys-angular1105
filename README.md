@@ -1,6 +1,6 @@
 # Login Form
 
-A customizable and themeable login form component for Angular, designed to align with your design system's standards and provide a reusable login interface. This component is built with accessibility and flexibility in mind, making it suitable for various applications.
+A customizable and themeable login form component for Angular, designed to align with design system's standards and provide a reusable login interface. This component is built with accessibility and flexibility in mind, making it suitable for various applications.
 
 ## Table of Contents
 
