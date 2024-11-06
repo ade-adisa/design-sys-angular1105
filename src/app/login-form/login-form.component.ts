@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation  } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation  } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -17,6 +17,7 @@ import { WrapperComponent } from '../wrapper/wrapper.component';
 export class LoginFormComponent {
   @Input() theme: string = 'light';
   @Input() showPasswordStrength: boolean = false;
+  @Output() submit = new EventEmitter<{ email: string; password: string }>();
 
   loginForm: FormGroup;
   errors = { email: "", password: "" };
@@ -97,7 +98,7 @@ export class LoginFormComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Form Submitted:', this.loginForm.value);
+      this.submit.emit(this.loginForm.value);
     } else {
       this.loginForm.markAllAsTouched();
     }
